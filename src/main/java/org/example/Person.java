@@ -14,7 +14,52 @@ public class Person {
      */
     public Person(String name, int age, String gender){
 
+        isNameCorrect(name);
+        this.name = name;
     }
+
+    /*
+        Comprueba que el nombre aportado en el constructor es correcto,
+        en caso contrario, se crea una excepcion
+     */
+    private void isNameCorrect(String name){
+
+        /*
+        Comprueba que el nombre no es nulo y tiene longitud minima 2 */
+        if(name!=null && name.length()>1){
+            char checking;
+            boolean enoughVowels = false;
+            boolean enoughCons = false;
+
+            /*
+            Comprueba que cada caracter del String es una letra o un espacio */
+            for(int i =0; i<name.length(); i++){
+                checking = name.charAt(i);
+
+                if( !(checking>='A' && checking<='Z')
+                        && !(checking>='a' && checking<='z')
+                        && checking!=' '
+                ){
+                    throw new RuntimeException("El nombre contiene caracteres especiales");
+                /*
+                Compueba que hay minimo una vocal y una consonante */
+                }else if(checking=='A' || checking=='E' || checking=='I' || checking=='O' || checking=='U' ||
+                            checking=='a' || checking=='e' || checking=='i' || checking=='o' || checking=='u'){
+                        enoughVowels = true;
+                }else if (checking!=' ') {
+                    enoughCons = true;
+                }
+            }
+
+            if(!enoughVowels || !enoughCons){
+                throw new RuntimeException("El nombre no contiene suficientes vocales o consonantes");
+            }
+        }else {
+            throw new RuntimeException("El nombre no contiene suficientes caracteres");
+        }
+    }
+
+
 
     public String name(){
         return name;
@@ -38,5 +83,4 @@ public class Person {
      */
     public static double[] averageAgePerGender(List<Person> persons)throws RuntimeException{
         
-    }
 }

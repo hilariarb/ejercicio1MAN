@@ -135,4 +135,45 @@ public class PersonTest {
         assertThrows(RuntimeException.class, ()-> Person.averageAgePerGender(lista));
     }
 
+    @Test
+    public void shouldAverageMaleBeValid(){
+        List<Person> lista = new ArrayList<Person>();
+        lista.add(new Person("Manuel", 10, "Male"));
+        lista.add(new Person("Lucas", 0, "Male"));
+
+        double expectedValue = 5.00;
+        double actualValue = Person.averageAgePerGender(lista)[0];
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldAverageFemaleBeValid(){
+        List<Person> lista = new ArrayList<Person>();
+        lista.add(new Person("Lucia", 10, "Female"));
+        lista.add(new Person("Carmen", 0, "Female"));
+
+        double expectedValue = 5.00;
+        double actualValue = Person.averageAgePerGender(lista)[1];
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldAverageFemaleBeCero(){
+        List<Person> lista = new ArrayList<Person>();
+        lista.add(new Person("Manuel", 10, "Male"));
+
+        double expectedValue = 0.00;
+        double actualValue = Person.averageAgePerGender(lista)[1];
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldAverageMaleBeCero(){
+        List<Person> lista = new ArrayList<Person>();
+        lista.add(new Person("Lucia", 10, "Female"));
+
+        double expectedValue = 0.00;
+        double actualValue = Person.averageAgePerGender(lista)[0];
+        assertEquals(expectedValue, actualValue);
+    }
 }

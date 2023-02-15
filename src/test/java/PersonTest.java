@@ -75,4 +75,52 @@ public class PersonTest {
         assertThrows(RuntimeException.class, ()-> new Person("Maria", 23, "FMale"));
     }
 
+    @Test
+    public void shouldNameBeValid(){
+        person = new Person("Maria", 23, "Female");
+        String expectedValue = "Maria";
+        String actualValue =person.name();
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldNameNotStartingWithCapitalBeValid(){
+        person = new Person("maria", 23, "Female");
+        String expectedValue = "maria";
+        String actualValue =person.name();
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldNameWithSpaceBeValid(){
+        person = new Person("Maria Victoria", 23, "Female");
+        String expectedValue = "Maria Victoria";
+        String actualValue =person.name();
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldAgeBeValid(){
+        person = new Person("Maria", 23, "Female");
+        int expectedValue = 23;
+        int actualValue =person.age();
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldGenderFemaleBeValid(){
+        person = new Person("Maria", 23, "Female");
+        String expectedValue = "Female";
+        String actualValue =person.gender();
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldGenderMaleBeValid(){
+        person = new Person("Lucas", 23, "Male");
+        String expectedValue = "Male";
+        String actualValue =person.gender();
+        assertEquals(expectedValue, actualValue);
+    }
+
 }

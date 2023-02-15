@@ -16,6 +16,9 @@ public class Person {
 
         isNameCorrect(name);
         this.name = name;
+
+        isAgeCorrect(age);
+        this.age = age;
     }
 
     /*
@@ -56,6 +59,18 @@ public class Person {
             }
         }else {
             throw new RuntimeException("El nombre no contiene suficientes caracteres");
+        }
+    }
+
+
+    /*
+        Comprueba que la edad aportada en el constructor este en un rango valido.
+        Se considera la edad maxima 120.
+        En caso de no estar entre el rango valido, se crea una Excepcion
+    */
+    private void isAgeCorrect(int age){
+        if(age<0 || age>120){
+            throw new RuntimeException("La edad tiene un valor no valido");
         }
     }
 

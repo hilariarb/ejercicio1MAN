@@ -117,5 +117,35 @@ public class Person {
     @return
      */
     public static double[] averageAgePerGender(List<Person> persons)throws RuntimeException{
-        
+        double[] result = new double[2];
+
+        if(persons!=null && persons.size()>0){
+            int countMale = 0;
+            int countFemale = 0;
+
+            for(Person p : persons){
+                //Index 0 = Male
+                if(p.gender.equalsIgnoreCase("Male")){
+                    result[0] = result[0] + p.age();
+                    countMale++;
+                }
+
+                //Index 1 = Female
+                if(p.gender.equalsIgnoreCase("Female")){
+                    result[1] = result[1] + p.age();
+                    countFemale++;
+                }
+            }
+
+            if (countMale>0){
+                result[0] = result[0] / countMale;
+            }
+            if (countFemale>0){
+                result[1] = result[1] / countFemale;
+            }
+        }else{
+            throw new RuntimeException("Lista nula o demasiado pequeña");
+        }
+        return result;
+    }
 }

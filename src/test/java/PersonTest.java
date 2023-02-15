@@ -123,4 +123,16 @@ public class PersonTest {
         assertEquals(expectedValue, actualValue);
     }
 
+    @Test
+    public void shouldListBeNullThrowAnException(){
+        assertThrows(RuntimeException.class, ()-> Person.averageAgePerGender(null));
+    }
+
+    @Test
+    public void shouldListBeSize0ThrowAnException(){
+        List<Person> lista = new ArrayList<Person>();
+
+        assertThrows(RuntimeException.class, ()-> Person.averageAgePerGender(lista));
+    }
+
 }

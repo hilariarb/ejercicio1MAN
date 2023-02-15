@@ -19,6 +19,9 @@ public class Person {
 
         isAgeCorrect(age);
         this.age = age;
+
+        isGenderCorrect(gender);
+        this.gender = gender;
     }
 
     /*
@@ -75,6 +78,23 @@ public class Person {
     }
 
 
+    /*
+        Comprueba que el genero aportado en el constructor es correcto,
+        en caso contrario, se crea una Excepcion
+    */
+    private void isGenderCorrect(String gender){
+        /*
+        Comprueba si es nulo  */
+        if(gender!=null){
+            /*
+            Comprueba que el genero sea Male o Female */
+            if(!gender.equalsIgnoreCase("Male") && !gender.equalsIgnoreCase("Female")){
+                throw new RuntimeException("El genero no coincide con lo esperado");
+            }
+        }else{
+            throw new RuntimeException("Genero no aportado");
+        }
+    }
 
     public String name(){
         return name;

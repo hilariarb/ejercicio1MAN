@@ -55,4 +55,24 @@ public class PersonTest {
         assertThrows(RuntimeException.class, ()-> new Person("Mar{a", 23, "Female"));
     }
 
+    @Test
+    public void shouldAgeBeNegativeRaiseAnException(){
+        assertThrows(RuntimeException.class, ()-> new Person("Maria", -1, "Female"));
+    }
+
+    @Test
+    public void shouldAgeBeOver120RaiseAnException(){
+        assertThrows(RuntimeException.class, ()-> new Person("Maria", 121, "Female"));
+    }
+
+    @Test
+    public void shouldGenderBeNullRaiseAnException(){
+        assertThrows(RuntimeException.class, ()-> new Person("Maria", 23, null));
+    }
+
+    @Test
+    public void shouldGenderNotBeFemaleOrMaleRaiseAnException(){
+        assertThrows(RuntimeException.class, ()-> new Person("Maria", 23, "FMale"));
+    }
+
 }
